@@ -109,9 +109,10 @@ class AuthPlugin extends EventEmitter {
     }
   }
   /** Authenticates the user using the redirect method */
-  loginWithRedirect(o = {
-    returnTo: window.location.href
-  }) {
+  loginWithRedirect(o = {}) {
+    if (!o.appState) {
+      o.redirectUri = o.redirectUri || window.location.href
+    }
     return this.auth0Client.loginWithRedirect(o);
   }
   /**
@@ -123,7 +124,7 @@ class AuthPlugin extends EventEmitter {
   }
   /**
    * Returns the access token. If the token is invalid or missing, a new one is retrieved
-   * @param {import("@auth0/auth0-spa-js").GetTokenSilentlyOptions} [o]
+   * @param {AuthServiceMethodOptions} [o]
    */
   getTokenSilently(o) {
     return this.auth0Client.getTokenSilently(o);
@@ -183,7 +184,7 @@ class AuthPlugin extends EventEmitter {
 
   /**
    * Gets the access token using a popup window
-   * @param {import("@auth0/auth0-spa-js").GetTokenWithPopupOptions} o
+   * @param {AuthServiceMethodOptions} o
    */
   getTokenWithPopup(o) {
     return this.auth0Client.getTokenWithPopup(o);
@@ -238,7 +239,7 @@ class AuthPlugin extends EventEmitter {
       domain: options.domain,
       client_id: options.clientId,
       audience: options.audience,
-      redirect_uri: options.redirectUri
+      redirect_uri: options.redirectUri || window.location.origin
     });
 
     try {
@@ -315,3 +316,20 @@ const $AuthProvider = {
  */
   initializeAuth(options) { return new AuthPlugin(options) }
 }
+
+
+/**
+ * @typedef {{
+  * display?: 'page' | 'popup' | 'touch' | 'wap',
+  * prompt?: 'none' | 'login' | 'consent' | 'select_account',
+  * max_age?: string | number  ,
+  * ui_locales?: string,
+  * id_token_hint?: string,
+  * login_hint?: string,
+  * acr_values?: string,
+  * scope?: string,
+  * audience?: string,
+  * connection?: string,
+  * [key: string]: any
+  * }} AuthServiceMethodOptions
+  */

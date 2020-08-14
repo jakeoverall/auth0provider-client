@@ -1,0 +1,28 @@
+{
+  "name": "@bcwdev/auth0provider-client",
+  "version": "0.0.1",
+  "description": "Auth0Provider designed to make Auth0 easier for adaption regardless of client framework",
+  "main": "lib/index.js",
+  "files": [
+    "lib/*.js",
+    "browser/*.js"
+  ],
+  "dependencies": {
+    "@auth0/auth0-spa-js": "^1.11.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jakeoverall/auth0provider-client"
+  },
+  "bugs": {
+    "url": "https://github.com/jakeoverall/auth0provider-client/issues"
+  },
+  "keywords": [
+    "auth0",
+    "vue",
+    "react",
+    "angular"
+  ],
+  "author": "Jake Overall <joverall22@gmail.com>",
+  "license": "ISC"
+}

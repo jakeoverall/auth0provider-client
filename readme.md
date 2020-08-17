@@ -31,7 +31,7 @@ AuthService.on(AuthService.AUTH_EVENTS.LOADED, () => {
 
 #### CDN
 ```html
-<script src="https://cdn.jsdelivr.net/gh/jakeoverall/auth0-vue/browser/Auth0Provider.browser.js">
+<script src="https://cdn.jsdelivr.net/gh/jakeoverall/auth0provider-client/browser/Auth0Provider.browser.js">
 ```
 
 ----------------------------------------------------

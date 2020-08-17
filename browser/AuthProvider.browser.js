@@ -1,3 +1,5 @@
+(function(){
+
 class EventEmitter {
   constructor() {
     this._listeners = {};
@@ -268,6 +270,20 @@ class AuthPlugin extends EventEmitter {
   }
 }
 
+const onAuthLoaded = cb => {
+  return new Promise((resolve, reject) => {
+    const authService = instance;
+    if (!authService.loading) {
+      if (typeof cb == 'function') { cb(authService) }
+      return resolve(authService);
+    }
+    authService.on(authService.AUTH_EVENTS.LOADED, () => {
+      resolve(authService)
+      if (typeof cb == 'function') { cb(authService) }
+    })
+  });
+};
+
 function b64DecodeUnicode(str = ".") {
   try {
     return decodeURIComponent(
@@ -310,13 +326,32 @@ function decodeToken(str = ".") {
 }
 
 
-const $AuthProvider = {
+const Auth0Provider = {
   /**
  * @param {{ onRedirectCallback: () => void; domain: string, audience: string, clientId: string  }} options
  */
-  initializeAuth(options) { return new AuthPlugin(options) }
+  initialize(options) { return new AuthPlugin(options); },
+  /**
+  * @param {{ fullPath: any; }} to
+  * @param {any} from
+  * @param {() => any} next
+  */
+  async authGuard(to, from, next) {
+    try {
+      const authService = instance;
+      await onAuthLoaded();
+      if (authService.isAuthenticated) {
+        return next();
+      }
+      return instance.loginWithRedirect({ appState: { targetUrl: to.fullPath } });
+    } catch (e) {
+      return instance.loginWithRedirect({ appState: { targetUrl: to.fullPath } });
+    }
+  },
+  decodeToken
 }
 
+window.Auth0Provider = Auth0Provider
 
 /**
  * @typedef {{
@@ -333,3 +368,4 @@ const $AuthProvider = {
   * [key: string]: any
   * }} AuthServiceMethodOptions
   */
+}())

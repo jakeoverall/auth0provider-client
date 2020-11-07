@@ -1,10 +1,10 @@
-import { Auth0Provider } from '../lib'
+import { initialize } from '../lib'
 
 const domain = ""
 const clientId = ""
 const audience = ""
 
-export const AuthService = Auth0Provider.initialize({
+export const AuthService = initialize({
   domain,
   clientId,
   audience,

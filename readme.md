@@ -1,9 +1,10 @@
 # @bcwdev/auth0provider-client 
 
-```AuthService.js
-import { Auth0Provider } from '@bcwdev/auth0provider-client'
+**_AuthService.js_**
+```js
+import { initialize } from '@bcwdev/auth0provider-client'
 
-export const AuthService = Auth0Provider.initialize({
+export const AuthService = initialize({
   domain,
   clientId,
   audience,

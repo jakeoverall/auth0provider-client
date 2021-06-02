@@ -125,6 +125,4 @@ export const AuthService = Auth0Provider.initialize(options)
 
 ```
 
-> Caution: Auth0Provider `identity` is easily modifed on the client and therefore cannot be trusted when making server side decisions. Your server should use the bearer token and the auth0 api when handeling requests [see @bcwdev/auth0provider]('https://www.npmjs.com/package/@bcwdev/auth0provider')
-
-Conditional rendering in vue templates based on roles or permissions can be accomplished directly from the `$auth` property
+> Caution: Auth0Provider `identity` is easily modifed on the client and therefore cannot be trusted when making server side decisions. Your server should use the bearer token and the auth0 api to validate requests [see @bcwdev/auth0provider]('https://www.npmjs.com/package/@bcwdev/auth0provider')

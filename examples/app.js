@@ -1,8 +1,8 @@
 import { initialize } from '../lib'
 
-const domain = ""
-const clientId = ""
-const audience = ""
+const domain = ''
+const clientId = ''
+const audience = ''
 
 export const AuthService = initialize({
   domain,
@@ -18,9 +18,9 @@ export const AuthService = initialize({
 })
 
 // Listen for secific AUTH_EVENTS hooks
-AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async () => {
+AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async() => {
   // AuthService.user is now defined
   const user = AuthService.user
-  //Set bearer token on all requests
+  // Set bearer token on all requests
   // example: $resource.defaultHeaders.Authorization = AuthService.bearer
 })

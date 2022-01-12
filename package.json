@@ -1,11 +1,13 @@
 {
   "name": "@bcwdev/auth0provider-client",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Auth0Provider designed to make Auth0 easier for adaption regardless of client framework",
   "main": "lib/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "lib/*.js",
-    "browser/*.js"
+    "browser/*.js",
+    "dist/*"
   ],
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.15.0"

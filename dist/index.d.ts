@@ -90,7 +90,7 @@ export class AuthPlugin extends EventEmitter {
 }
 
 export interface Auth0ConfigurationOptions {
-  onRedirectCallback: () => void
+  onRedirectCallback: (appstate: { targetUrl: string }) => void
   domain: string
   audience: string
   clientId: string

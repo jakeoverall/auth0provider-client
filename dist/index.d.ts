@@ -14,8 +14,8 @@ export interface AuthServiceMethodOptions {
 
 export class EventEmitter {
   _listeners: { [key: string]: any[] };
-  on(event: string | number, fn: function, thisContext: any = null): void
-  off(event: string | number, fn: function): void
+  on(event: string | number, fn: Function, thisContext?: any): void
+  off(event: string | number, fn: Function): void
   emit(event: string, payload: any): void
 }
 
@@ -42,23 +42,23 @@ export class AuthPlugin extends EventEmitter {
 
 
   /** Authenticates the user using a popup window */
-  async loginWithPopup(options: AuthServiceMethodOptions): Promise<void>
+  loginWithPopup(options?: AuthServiceMethodOptions): Promise<void>
 
   /** Handles the callback when logging in using a redirect */
-  async handleRedirectCallback(): Promise<void>
+  handleRedirectCallback(): Promise<void>
 
   /** Authenticates the user using the redirect method */
-  loginWithRedirect(o: AuthServiceMethodOptions): Promise<void>
+  loginWithRedirect(o?: AuthServiceMethodOptions): Promise<void>
 
   /**
    * Returns all the claims present in the ID token
    */
-  getIdTokenClaims(o: AuthServiceMethodOptions): any
+  getIdTokenClaims(o?: AuthServiceMethodOptions): any
 
   /**
    * Returns the access token. If the token is invalid or missing, a new one is retrieved
    */
-  async getTokenSilently(o: AuthServiceMethodOptions): Promise<string>
+  getTokenSilently(o?: AuthServiceMethodOptions): Promise<string>
 
   /**
    * @param {string[] | string} permissions
@@ -71,14 +71,14 @@ export class AuthPlugin extends EventEmitter {
   hasRoles(roles: string[] | string): Promise<boolean>
 
 
-  async getIdentityClaims(token: string): Promise<any>
+  getIdentityClaims(token: string): Promise<any>
 
   /**
    * Gets the access token using a popup window
    */
-  async getTokenWithPopup(o: AuthServiceMethodOptions): Promise<string>
+  getTokenWithPopup(o?: AuthServiceMethodOptions): Promise<string>
 
-  async getUserData(): Promise<void>
+  getUserData(): Promise<void>
 
   /** Logs the user out and removes their session on the authorization server */
   logout(o: AuthServiceMethodOptions): void
@@ -86,9 +86,8 @@ export class AuthPlugin extends EventEmitter {
   /**
    * Use this lifecycle method to instantiate the SDK client
    */
-  async created(options: AuthServiceMethodOptions): Promise<void>
+  created(options: AuthServiceMethodOptions): Promise<void>
 }
-
 
 export interface Auth0ConfigurationOptions {
   onRedirectCallback: () => void
@@ -99,15 +98,15 @@ export interface Auth0ConfigurationOptions {
 }
 
 export function onAuthLoaded(cb: () => any): Promise<AuthPlugin>
-export function b64DecodeUnicode(str: string = '.'): string
-export function decodeToken(str: string = '.'): string
+export function b64DecodeUnicode(str: string): string
+export function decodeToken(str: string): string
 
 export function initialize(options: Auth0ConfigurationOptions): AuthPlugin
 
-export async function authGuard(to: any, from: any, next: () => any): Promise<any>
+export function authGuard(to: any, from: any, next: () => any): Promise<any>
 
-export async function authSettled(to: any, from: any, next: () => any): Promise<any>
+export function authSettled(to: any, from: any, next: () => any): Promise<any>
 
-export const hasPermissions = (permissions: string | string[]) => instance.hasPermissions(permissions)
+export function hasPermissions(permissions: string | string[]): boolean
 
-export const hasRoles = (roles: string | string[]) => instance.hasRoles(roles)
+export function hasRoles(roles: string | string[]): boolean

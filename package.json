@@ -10,7 +10,7 @@
     "dist/*"
   ],
   "dependencies": {
-    "@auth0/auth0-spa-js": "1.21.0"
+    "@auth0/auth0-spa-js": "1.22.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",

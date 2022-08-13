@@ -88,6 +88,7 @@
       try {
         await this.auth0Client.loginWithPopup(o)
         this.user = await this.auth0Client.getUser()
+        this.user = this.user || {}
         await this.getUserData()
         this.isAuthenticated = true
       } catch (e) {
@@ -225,6 +226,7 @@
           }
           this.userInfo[keep] = userData[key]
         }
+        this.user = this.user || {}
         this.user.isAuthenticated = true
         this.emit(this.AUTH_EVENTS.AUTHENTICATED, this)
       } catch (e) {

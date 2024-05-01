@@ -1,6 +1,6 @@
 {
   "name": "@bcwdev/auth0provider-client",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Auth0Provider designed to make Auth0 easier for adaption regardless of client framework",
   "main": "lib/index.js",
   "types": "dist/index.d.ts",
@@ -13,12 +13,8 @@
     "@auth0/auth0-spa-js": "1.22.0"
   },
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.26.0",
-    "eslint-config-standard": "^16.0.2",
-    "eslint-plugin-import": "^2.23.2",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.1.0"
+    "@types/node": "^20.12.7",
+    "eslint": "^7.32.0"
   },
   "repository": {
     "type": "git",

@@ -16,7 +16,7 @@ export const AuthService = initialize({
 // Listen for secific AUTH_EVENTS hooks
 AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async () => {
   // AuthService.user is now defined
-  const user = AuthService.user
+  const identity = AuthService.identity
   // Set bearer token on all requests
   // example: $resource.defaultHeaders.Authorization = AuthService.bearer
 })

@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "types",
+    "allowJs": true,
+    "target": "ES6",
+    "moduleResolution": "node"
+  },
+  "include": [
+    "lib/**/*.js"
+  ]
+}

@@ -5,4 +5,6 @@ import { authGuard } from "./Auth0Provider.js";
 import { authSettled } from "./Auth0Provider.js";
 import { decodeToken } from "./Auth0Provider.js";
 import { Identity } from "./Auth0Provider.js";
-export { AUTH_EVENTS, initialize, hasPermissions, authGuard, authSettled, decodeToken, Identity };
+import { requiresPermissions } from "./Auth0Provider.js";
+import { onAuthLoaded } from "./Auth0Provider.js";
+export { AUTH_EVENTS, initialize, hasPermissions, authGuard, authSettled, decodeToken, Identity, requiresPermissions, onAuthLoaded };

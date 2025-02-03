@@ -180,4 +180,16 @@ export class Identity {
      * */
     updated_at: string;
 }
+/**
+ * @param {AuthPlugin|any} newInstance
+ * Useful for testing
+ * */
+export function setInstance(newInstance: AuthPlugin | any): void;
+export function onAuthLoaded(cb: any): Promise<any>;
+/**
+ *
+ * @param {String | String[]} permissions
+ * @returns
+ */
+export function requiresPermissions(permissions?: string | string[]): (to: any, from: any, next: any) => Promise<any>;
 import auth0 = require("@auth0/auth0-spa-js");

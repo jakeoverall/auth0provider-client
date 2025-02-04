@@ -1,6 +1,6 @@
 {
   "name": "@bcwdev/auth0provider-client",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "description": "Auth0Provider designed to make Auth0 easier for adaption regardless of client framework",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
